@@ -1,0 +1,42 @@
+CREATE TABLE product(
+    product_id INT AUTO_INCREMENT,
+    title VARCHAR(30),
+    price INT,
+    stock INT,
+    description VARCHAR(1000) DEFAULT 'Not available',
+    image BLOB,
+    PRIMARY KEY(product_id)
+);
+
+CREATE TABLE orders(
+    order_id INT AUTO_INCREMENT,
+    customer_id INT,
+    product_id INT,
+    status ENUM('pending','completed'),
+    FOREIGN KEY(product_id) REFERENCES product(product_id) ON DELETE SET NULL,
+    FOREIGN KEY(customer_id) REFERENCES user(user_id) ON DELETE SET NULL,
+    PRIMARY KEY(order_id)
+);
+
+CREATE TABLE user(
+    user_id INT AUTO_INCREMENT,
+    first_name VARCHAR(20),
+    last_name VARCHAR(20),
+    email VARCHAR(40),
+    PRIMARY KEY(user_id)
+);
+
+drop table orders;
+
+INSERT INTO product(title,price,stock) VALUES('Boom',100,2);
+INSERT INTO user(first_name,last_name,email) VALUES('Jacob','Spilg','jacobspilg@hotmail.se');
+INSERT INTO orders(customer_id,status,product_id) VALUES (1,'pending',);
+
+
+
+
+
+
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'backend'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'backend'@'localhost' IDENTIFIED BY 'backendpassword'
