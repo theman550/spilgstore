@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const port = 3000;
+const port = 3001;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,7 +30,9 @@ app.use('/users', usersRouter);
 app.use('/products',productRouter);
 
 
-console.log(`Listening to port ${port}`);
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port + '!');
+});
 
 
 // catch 404 and forward to error handler
