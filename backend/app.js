@@ -13,7 +13,8 @@ var productRouter = require('./routes/products');
 var app = express();
 var router = express.Router();
 
-
+var cors = require('cors');
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,8 +32,11 @@ app.use('/products',productRouter);
 
 
 app.listen(port, function () {
-  console.log('Example app listening on port ' + port + '!');
+  console.log('Backend listening on port ' + port);
 });
+
+
+
 
 
 // catch 404 and forward to error handler

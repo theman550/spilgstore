@@ -4,6 +4,9 @@ const config = {
         user: "backend",
         password: "backendpassword",
         database: "SpilgStore",
+        waitForConnections: true,
+        connectionLimit: 10,
+        queueLimit: 0
     },
     itemsPerPage: 10,
 }
