@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from './ProductCard'
-//import {useState} from 'react'
+const config = require('../config');
 
 class ProductList extends React.Component {
 
@@ -11,14 +11,13 @@ class ProductList extends React.Component {
             upperPrice: 999999,
             lowerPrice: 0,
             products: [],
-            filteredProducts: [],
             page: 0
         };
     }
 
     getProducts() {
-        console.log("Fetchar från: " + this.props.backendURL);
-        fetch(this.props.backendURL + "/products/")
+        console.log("Fetchar från: " + config.backendURL);
+        fetch(config.backendURL + "/products/")
             .then(response => response.json())
             .then(data => {
                 this.setState({ products: data.data, page: data.meta.page })
